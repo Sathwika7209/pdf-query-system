@@ -148,7 +148,7 @@ def main():
     load_dotenv()
 
     st.set_page_config(page_title="", page_icon=":books:")
-    st.header("JITS PDF QUERY SYSTEM")
+    st.header("BIHER PDF QUERY SYSTEM")
     
     genai_api_key = os.getenv("GOOGLE_API_KEY")
     if not genai_api_key:
@@ -176,6 +176,7 @@ def main():
             with st.spinner("Processing PDFs"):
                 text_chunks = get_all_pdfs_chunks(pdf_docs)
                 vectorstore_pdfs = get_vector_store(text_chunks)
+                st.write(vectorstore_pdfs)
                 st.session_state.vectorstore_pdfs = vectorstore_pdfs
 
         image_files = st.file_uploader("Upload your Images here and Click on 'Submit Images'", accept_multiple_files=True, type=['png', 'jpg', 'jpeg'])
